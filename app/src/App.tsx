@@ -1,8 +1,5 @@
 import Menu from './components/Menu';
-// import Page from './pages/Page';
-import Login from './pages/Login';
-import Page from './pages/PostDetail';
-import PostList from './pages/PostList';
+
 import React, { Component } from 'react';
 import { IonApp, IonRouterOutlet, IonSplitPane } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
@@ -28,6 +25,12 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
+// Pages
+import Login from './pages/Login';
+import PostList from './pages/PostList';
+import PostDetail from './pages/PostDetail';
+import PostCreate from './pages/PostCreate';
+
 interface PrivateRouteInterface {
   component: any;
   path: string;
@@ -48,14 +51,14 @@ const App: React.FC = () => {
     <IonApp>
       <IonReactRouter>
         <IonSplitPane contentId="main">
-          {Auth.isAuth() ?
+          {/* {Auth.isAuth() ?
             <Menu />
-            : ''}
+            : ''} */}
           <IonRouterOutlet id="main">
             <Route path="/login" component={Login} exact />
             <PrivateRoute path="/" component={PostList} exact />
-            <PrivateRoute path="/create-post" component={PostList} exact />
-            <PrivateRoute path="/post-detail/:id" component={PostList} exact />
+            <PrivateRoute path="/create-post" component={PostCreate} exact />
+            <PrivateRoute path="/post-detail/:id" component={PostDetail} exact />
             {/* <PrivateRoute path="/page" component={Page} exact /> */}
             {/* <Route path="/page/:name" component={Page} exact /> */}
             {/* <Redirect from="/" to="/page/Inbox" exact /> */}
